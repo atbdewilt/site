@@ -1,0 +1,19 @@
+{
+    "name": "adewi/test_redirect",
+    "authors": [
+        {
+            "name": "Alex de Wilt",
+            "email": "atb.dewilt@gmail.com"
+        }
+    ],
+    "require": {
+        "components/jquery": "^3.6",
+        "components/jqueryui": "^1.12",
+        "components/bootstrap": "^4.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
+    }
+}

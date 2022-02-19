@@ -1,0 +1,41 @@
+<IfModule mod_rewrite.c>
+
+    # Disable directory browsing
+    Options All -Indexes
+
+    # Assign index page for this directory
+    DirectoryIndex public/index.php
+
+    # Make sure the rewrite engine is on
+    RewriteEngine On
+
+    # Define base for following rewrites
+    RewriteBase /site/
+
+    # # Serve custom error pages
+    # ErrorDocument 400 /error/400
+    # ErrorDocument 401 /error/401
+    # ErrorDocument 403 /error/403
+    # ErrorDocument 404 /error/404
+    # ErrorDocument 500 /error/500
+
+    # Shortcut packages
+    RewriteRule ^bootstrap/(.*) vendor/components/bootstrap/$1
+    RewriteRule ^jquery/(.*) vendor/components/jquery/$1
+    RewriteRule ^jqueryui/(.*) vendor/components/jqueryui/$1
+
+    # Force trailing slash
+    RewriteCond %{REQUEST_URI} /+[^\.]+$
+    RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+
+    # Rewrite if request is no existing file
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ public/index.php [L]
+
+    # Deny access to these folders
+    RewriteRule ^app/(.*)?$ / [F]
+    RewriteRule ^vendor/composer/(.*)?$ / [F]
+    RewriteRule ^vendor/autoload\.(php)$ / [F]
+    RewriteRule ^composer\.(lock|json)$ / [F]
+
+</IfModule>
