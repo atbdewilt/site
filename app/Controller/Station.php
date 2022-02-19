@@ -57,7 +57,7 @@ class Station extends Controller
 
             $params = [
                 'uicCode' => $s1,
-                'maxJourneys' => '5'
+                //'maxJourneys' => '10',
             ];
 
             return  [
